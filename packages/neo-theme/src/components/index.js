@@ -4,10 +4,11 @@ import Switch from "@frontity/components/switch";
 import Link from "./link";
 import List from "./list";
 import Page from "./page";
+import Loading from "./loading";
+import PageError from "./page-error";
 
 const Root = ({ state }) => {
   const data = state.source.get(state.router.link);
-  console.log("data----------", data);
   return (
     <>
       You can edit your package in:
@@ -20,8 +21,10 @@ const Root = ({ state }) => {
       </nav>
       <main>
         <Switch>
+          <Loading when={data.isFetching} />
           <List when={data.isArchive} />
           <Page when={data.isPostType} />
+          <PageError when={data.isError} />
         </Switch>
       </main>
     </>
