@@ -32,14 +32,14 @@ const Container = styled.div`
 const Title = styled.h1`
   margin: 0;
   margin-bottom: 16px;
-  color: #6eef8d;
+  color: black;
   text-transform: uppercase;
 `;
 
 const Description = styled.h4`
   margin: 0;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 70%);
+  color: rgb(255 255 255 / 100%);
 `;
 
 const StyledLink = styled(Link)`

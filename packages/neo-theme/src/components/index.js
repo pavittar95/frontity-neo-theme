@@ -3,7 +3,7 @@ import { Global, css, connect, styled, Head } from "frontity";
 import Switch from "@frontity/components/switch";
 import Title from "./title";
 import Header from "./header";
-import List from './list';
+import List from "./list";
 function Root({ state }) {
   const data = state.source.get(state.router.link);
   return (
@@ -18,11 +18,11 @@ function Root({ state }) {
       </HeadContainer>
       <Global styles={globalStyles} />
       <Main>
-      <Switch>
-        {/* <Loading when={data.isFetching} /> */}
-        <List when={data.isArchive} />
-        {/* <Post when={data.isPostType} /> */}
-        {/* <PageError when={data.isError} /> */}
+        <Switch>
+          {/* <Loading when={data.isFetching} /> */}
+          <List when={data.isArchive} />
+          {/* <Post when={data.isPostType} /> */}
+          {/* <PageError when={data.isError} /> */}
         </Switch>
       </Main>
     </>
@@ -47,17 +47,13 @@ const HeadContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: black;
+  background-color: #6eef8d;
 `;
 
 const Main = styled.div`
   display: flex;
   justify-content: center;
-  background-image: linear-gradient(
-    180deg,
-    rgba(66, 174, 228, 0.1),
-    rgba(66, 174, 228, 0)
-  );
+  background-image: linear-gradient(180deg, rgb(0 0 0), rgb(0 0 0));
 `;
 
 export default connect(Root);
