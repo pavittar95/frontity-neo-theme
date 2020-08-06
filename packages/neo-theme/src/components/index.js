@@ -1,33 +1,63 @@
 import React from "react";
 import { Global, css, connect, styled, Head } from "frontity";
 import Switch from "@frontity/components/switch";
-import Link from "./link";
-import List from "./list";
-import Page from "./page";
-import Loading from "./loading";
-import PageError from "./page-error";
-
-const Root = ({ state }) => {
+import Title from "./title";
+import Header from "./header";
+import List from './list';
+function Root({ state }) {
   const data = state.source.get(state.router.link);
   return (
     <>
-      You can edit your package in:
-      <pre>packages/neo-theme/src/index.js</pre>
-      <p> Current url: {state.router.link}</p>
-      <nav>
-        <Link href="/">Home</Link>
-        <Link href="/page/2">More Posts</Link>
-        <Link href="/lorem-ipsum">Lorem ipsum</Link>
-      </nav>
-      <main>
-        <Switch>
-          <Loading when={data.isFetching} />
-          <List when={data.isArchive} />
-          <Page when={data.isPostType} />
-          <PageError when={data.isError} />
+      <Title />
+      <Head>
+        <meta name="description" content={state.frontity.description} />
+        <html lang="en" />
+      </Head>
+      <HeadContainer>
+        <Header />
+      </HeadContainer>
+      <Global styles={globalStyles} />
+      <Main>
+      <Switch>
+        {/* <Loading when={data.isFetching} /> */}
+        <List when={data.isArchive} />
+        {/* <Post when={data.isPostType} /> */}
+        {/* <PageError when={data.isError} /> */}
         </Switch>
-      </main>
+      </Main>
     </>
   );
-};
+}
+
+const globalStyles = css`
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: rgb(255 255 255 / 70%);
+  }
+  a,
+  a:visited {
+    color: inherit;
+    text-decoration: none;
+  }
+`;
+
+const HeadContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: black;
+`;
+
+const Main = styled.div`
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(
+    180deg,
+    rgba(66, 174, 228, 0.1),
+    rgba(66, 174, 228, 0)
+  );
+`;
+
 export default connect(Root);
