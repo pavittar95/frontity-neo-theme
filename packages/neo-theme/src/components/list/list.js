@@ -1,6 +1,7 @@
 import React from "react";
 import { connect, styled, decode } from "frontity";
 import ListItem from "./list-item";
+import Pagination from "./pagination";
 // import Pagination from "./pagination";
 
 const List = ({ state }) => {
@@ -17,6 +18,7 @@ const List = ({ state }) => {
         const item = state.source[type][id];
         return <ListItem key={item.id} item={item} />;
       })}
+      <Pagination/>
     </Container>
   );
 }

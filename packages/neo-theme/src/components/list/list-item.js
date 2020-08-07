@@ -19,14 +19,15 @@ function ListItem({ state, item }) {
 }
 
 const Article = styled.article`
-  padding: 10px 15px;
+  padding: 10px 0px 40px 0px;
   color: white;
+  border-bottom: 1px solid;
   margin-bottom: 20px;
 `;
 
 const Title = styled.p`
   text-transform: uppercase;
-  color: #6eef8d;
+  color: #1ed760;
   font-weight: bold;
 `;
 const PostDate = styled.i`
@@ -35,17 +36,17 @@ const PostDate = styled.i`
 
 const StyledLink = styled(Link)`
   padding: 6px;
-  background-color: white;
-  color: black;
+  background-color: #1ed760;
+  color: white;
   border-radius: 5px;
   font-weight: 500;
   letter-spacing: 0px;
   font-size: 12px;
-  &:visited{
-    color: black;
+  &:visited {
+    color: white;
   }
   &:hover {
-    color: #6eef8d;
+    color: black;
   }
 `;
 
