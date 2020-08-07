@@ -1,23 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
+import Link from "../link";
 
-function Pagination() {
+const Pagination = ({ state, actions }) => {
+  const { next, previous } = state.source.get(state.router.link);
+  useEffect(() => {
+    if (next) actions.source.fetch(next);
+  }, []);
+
   return (
-    <Flex>
-      <Button>Next</Button>
-      <Button>Prev</Button>
-    </Flex>
+    <FlexBetween>
+      {next && (
+        <Link link={next}>
+          <Text>← Older posts</Text>
+        </Link>
+      )}
+      {previous && next && " - "}
+      {previous && (
+        <Link link={previous}>
+          <Text>Newer posts →</Text>
+        </Link>
+      )}
+    </FlexBetween>
   );
-}
+};
+export default connect(Pagination);
 
-const Flex = styled.div`
-    display: flex;
-    justify-content: space-between;
+const FlexBetween = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
-const Button = styled.button`
-    outline: none;
-
+const Text = styled.em`
+  display: inline-block;
+  margin-top: 16px;
+  color: #1ed760;
 `;
-
-export default Pagination;
