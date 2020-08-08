@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "frontity dev",
     "build": "frontity build",
-    "serve": "frontity serve"
+    "serve": "frontity serve",
+    "deploy": "vercel"
   },
   "prettier": {},
   "dependencies": {
@@ -19,6 +20,7 @@
     "@frontity/tiny-router": "^1.2.1",
     "@frontity/wp-source": "^1.8.0",
     "frontity": "^1.10.0",
-    "neo-theme": "file:packages/neo-theme"
+    "neo-theme": "file:packages/neo-theme",
+    "vercel": "^19.2.0"
   }
 }
