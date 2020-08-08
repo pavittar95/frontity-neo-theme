@@ -5,6 +5,9 @@ import Title from "./title";
 import Header from "./header";
 import List from "./list";
 import Post from "./post";
+import Loading from "./loading";
+import PageError from "./page-error";
+
 function Root({ state }) {
   const data = state.source.get(state.router.link);
   return (
@@ -20,10 +23,10 @@ function Root({ state }) {
       <Global styles={globalStyles} />
       <Main>
         <Switch>
-          {/* <Loading when={data.isFetching} /> */}
+          <Loading when={data.isFetching} />
           <List when={data.isArchive} />
           <Post when={data.isPostType} />
-          {/* <PageError when={data.isError} /> */}
+          <PageError when={data.isError} />
         </Switch>
       </Main>
     </>
@@ -35,7 +38,7 @@ const globalStyles = css`
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background-color: rgb(255 255 255 / 70%);
+    background-color: black;
   }
   a,
   a:visited {
@@ -48,7 +51,7 @@ const HeadContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #1ED760;
+  background-color: #1ed760;
 `;
 
 const Main = styled.div`
